@@ -37,7 +37,7 @@ const App = () => {
         />
         {/* admin */}
         <Route
-          path="/admin/dashboard"
+          path="/admin"
           element={
             isSignedIn ? <AdminDashboard /> : <Navigate to="/login" replace />
           }

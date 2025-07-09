@@ -14,7 +14,7 @@ import {
 export const adminLinks = [
   {
     name: "Dashboard",
-    link: "/admin/dashboard",
+    link: "/admin",
     icon: <FiHome className="mr-3" />,
   },
   {
