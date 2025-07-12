@@ -5,18 +5,10 @@ const LeaveSchema = new Schema(
   {
     employee: {
       type: String,
-      required: [true, "employee is required"],
+      required: [false, "employee is required"],
     },
     leaveType: {
       type: String,
-      enum: [
-        "PTO",
-        "Sick",
-        "Maternity",
-        "Compassionate",
-        "Unpaid",
-        "Bereavement",
-      ],
       required: [true, "leave type is required"],
     },
     startDate: { type: Date, required: [true, "startDate is required"] },
@@ -31,8 +23,9 @@ const LeaveSchema = new Schema(
     approvedBy: {
       type: Schema.Types.ObjectId,
       ref: "User",
+      required: false,
     },
-    rejectionReason: { type: String },
+    rejectionReason: { type: String, required: false },
   },
   { timestamps: true }
 );

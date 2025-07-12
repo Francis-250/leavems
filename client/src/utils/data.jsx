@@ -1,13 +1,9 @@
 import {
   FiHome,
-  FiFilm,
   FiUsers,
-  FiSettings,
   FiCalendar,
   FiFileText,
   FiPieChart,
-  FiClock,
-  FiPlusCircle,
   FiList,
 } from "react-icons/fi";
 
@@ -54,5 +50,20 @@ export const employeeLinks = [
     name: "Holidays",
     link: "/holidays",
     icon: <FiCalendar className="mr-3" />,
+  },
+];
+
+export const metrics = [
+  {
+    title: "Pending Approvals",
+    value: "3",
+  },
+  {
+    title: "Approved This Month",
+    value: "5",
+  },
+  {
+    title: "Rejected Requests",
+    value: "1",
   },
 ];

@@ -17,3 +17,53 @@ body {
   background-color: var(--color-background);
   color: var(--color-text);
 }
+
+@layer cards {
+  .card-container {
+    @apply grid p-4 gap-3 md:gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 auto-rows-fr;
+  }
+
+  .card {
+    @apply relative flex flex-col md:gap-3 md:p-4 p-3 gap-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 ease-in-out transform hover:-translate-y-1;
+  }
+
+  .card-header {
+    @apply flex md:flex-row flex-col md:gap-0 gap-1 items-center justify-between pb-2 border-b border-gray-100 dark:border-gray-800;
+  }
+
+  .card-title {
+    @apply text-lg font-semibold text-gray-900 dark:text-white truncate;
+  }
+
+  .card-subtitle {
+    @apply text-sm text-gray-500 dark:text-gray-400 truncate;
+  }
+
+  .card-content {
+    @apply flex-1 py-2 text-gray-700 dark:text-gray-300;
+  }
+
+  .card-actions {
+    @apply flex gap-2 pt-3 border-t border-gray-100 dark:border-gray-800;
+  }
+
+  .card-badge {
+    @apply inline-flex items-center px-2.5 py-0.5  text-xs font-medium rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300;
+  }
+
+  .card-icon {
+    @apply w-5 h-5 text-gray-400 dark:text-gray-500;
+  }
+
+  .card-featured {
+    @apply ring-2 ring-blue-500 shadow-lg;
+  }
+
+  .card-compact {
+    @apply p-3 gap-2;
+  }
+
+  .card-elevated {
+    @apply shadow-lg hover:shadow-xl;
+  }
+}

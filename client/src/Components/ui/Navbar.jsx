@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { FiSearch, FiMenu } from "react-icons/fi";
+import { FiMenu } from "react-icons/fi";
 import ThemeToggle from "./ThemeToggle";
 import { useAuth, UserButton } from "@clerk/clerk-react";
 
@@ -22,20 +22,8 @@ export default function Navbar({ onMenuToggle }) {
             <FiMenu />
           </button>
           <h1 className="text-xl font-semibold text-gray-800 dark:text-gray-100 hidden md:block">
-            Leave Mangment System
+            Leave.M.S
           </h1>
-        </div>
-        <div className="hidden md:flex flex-1 max-w-md mx-4">
-          <div className="relative w-full">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <FiSearch className="h-5 w-5 text-gray-400 dark:text-gray-500" />
-            </div>
-            <input
-              type="text"
-              placeholder="Search..."
-              className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 outline-none sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-            />
-          </div>
         </div>
         <div className="flex items-center space-x-4">
           <ThemeToggle />
