@@ -19,7 +19,7 @@ export const adminLinks = [
     icon: <FiFileText className="mr-3" />,
   },
   {
-    name: "Employee Management",
+    name: "Employee",
     link: "/admin/employees",
     icon: <FiUsers className="mr-3" />,
   },
@@ -27,11 +27,6 @@ export const adminLinks = [
     name: "Reports",
     link: "/admin/reports",
     icon: <FiPieChart className="mr-3" />,
-  },
-  {
-    name: "Holiday Calendar",
-    link: "/admin/holidays",
-    icon: <FiCalendar className="mr-3" />,
   },
 ];
 
@@ -45,11 +40,6 @@ export const employeeLinks = [
     name: "My Leaves",
     link: "/leaves",
     icon: <FiList className="mr-3" />,
-  },
-  {
-    name: "Holidays",
-    link: "/holidays",
-    icon: <FiCalendar className="mr-3" />,
   },
 ];
 

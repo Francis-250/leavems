@@ -6,23 +6,26 @@ import {
   FaTrash,
   FaCalendarAlt,
   FaClock,
+  FaFilter,
 } from "react-icons/fa";
 import { calculateDuration, formatDate } from "../../utils/format";
+import axios from "axios";
 
-export default function LeaveHistoryTable({ setShowAddModal }) {
+export default function LeaveCard({ setShowAddModal }) {
   const [leave, setLeave] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
+  const [statusFilter, setStatusFilter] = useState("all");
+
+  console.log(`${import.meta.env.REACT_APP_BASE_URL}/leave`);
+  const BASE_URL =
+    import.meta.env.REACT_APP_BASE_URL || "http://localhost:5000/api";
 
   useEffect(() => {
     const fetchLeave = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/leave");
-        if (!response.ok) {
-          throw new Error("Failed to fetch Leave");
-        }
-        const data = await response.json();
-        setLeave(data);
+        const response = await axios.get(`${BASE_URL}/leave`);
+        setLeave(response.data);
       } catch (error) {
         console.error("Error fetching Leaves:", error);
       } finally {
@@ -33,18 +36,24 @@ export default function LeaveHistoryTable({ setShowAddModal }) {
     fetchLeave();
   }, []);
 
-  const filteredLeave = leave.filter(
-    (item) =>
+  const filteredLeave = leave.filter((item) => {
+    const matchesSearch =
       item.leaveType?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.reason?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.status?.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+      item.status?.toLowerCase().includes(searchTerm.toLowerCase());
+
+    const matchesStatus =
+      statusFilter === "all" ||
+      item.status?.toLowerCase() === statusFilter.toLowerCase();
+
+    return matchesSearch && matchesStatus;
+  });
 
   if (loading) {
     return (
       <div className="rounded-lg shadow-sm mt-6 p-6 h-96 flex items-center justify-center bg-white border border-blue-200 dark:bg-gray-900 dark:border-gray-700">
         <p className="text-gray-800 dark:text-gray-200">
-          Loading Product data...
+          Loading Leave data...
         </p>
       </div>
     );
@@ -66,6 +75,20 @@ export default function LeaveHistoryTable({ setShowAddModal }) {
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
               </div>
+
+              <div className="relative">
+                <FaFilter className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400 dark:text-gray-500" />
+                <select
+                  value={statusFilter}
+                  onChange={(e) => setStatusFilter(e.target.value)}
+                  className="pl-10 pr-8 py-2 border rounded-lg outline-none hover:border-blue-200 w-full sm:w-40 transition-colors duration-200 bg-white border-gray-300 text-gray-900 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100"
+                >
+                  <option value="all">All Status</option>
+                  <option value="approved">Approved</option>
+                  <option value="pending">Pending</option>
+                  <option value="rejected">Rejected</option>
+                </select>
+              </div>
             </div>
             <button
               onClick={() => setShowAddModal(true)}
@@ -83,8 +106,8 @@ export default function LeaveHistoryTable({ setShowAddModal }) {
           {filteredLeave.length === 0 ? (
             <div className="col-span-full text-center py-12">
               <div className="text-gray-400 dark:text-gray-500 text-lg">
-                {searchTerm
-                  ? "No leave records found matching your search."
+                {searchTerm || statusFilter !== "all"
+                  ? "No leave records found matching your filters."
                   : "No leave records found."}
               </div>
             </div>
@@ -135,13 +158,35 @@ export default function LeaveHistoryTable({ setShowAddModal }) {
                     {leave.reason}
                   </p>
                 </div>
-                <div className="px-6 mt-3 py-4 bg-gray-50 dark:bg-gray-900 border-t border-blue-200 dark:border-none rounded-lg">
+                <div
+                  className={`px-6 mt-3 py-4 border-t border-blue-200 dark:border-none rounded-lg ${
+                    leave.status?.toLowerCase() === "approved"
+                      ? "text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20"
+                      : leave.status?.toLowerCase() === "pending"
+                      ? "text-yellow-600 dark:text-yellow-400 bg-yellow-50 dark:bg-yellow-900/20"
+                      : leave.status?.toLowerCase() === "rejected"
+                      ? "text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20"
+                      : "text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-900/20"
+                  }`}
+                >
                   <div className="flex justify-between items-center">
                     <span className="text-xs text-gray-500 dark:text-gray-400">
                       Applied on {formatDate(leave.startDate)}
                     </span>
                     <div className="flex gap-2">
-                      <p className="text-lg capitalize">{leave.status}</p>
+                      <span
+                        className={`px-2 py-1 text-xs font-medium rounded-full capitalize ${
+                          leave.status?.toLowerCase() === "approved"
+                            ? "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400"
+                            : leave.status?.toLowerCase() === "pending"
+                            ? "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400"
+                            : leave.status?.toLowerCase() === "rejected"
+                            ? "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400"
+                            : "bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-400"
+                        }`}
+                      >
+                        {leave.status}
+                      </span>
                     </div>
                   </div>
                 </div>

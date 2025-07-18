@@ -20,11 +20,6 @@ const EmployeeSchema = new Schema(
       lowercase: true,
       trim: true,
     },
-    microsoftId: {
-      type: String,
-      unique: true,
-      sparse: true,
-    },
     department: {
       type: String,
       required: [true, "Department is required"],
@@ -38,25 +33,6 @@ const EmployeeSchema = new Schema(
       type: Date,
       required: [true, "Hire date is required"],
       default: Date.now,
-    },
-    leaveBalance: {
-      type: Number,
-      default: 0,
-      min: 0,
-    },
-    carriedOverDays: {
-      type: Number,
-      default: 0,
-      max: 5,
-    },
-    role: {
-      type: String,
-      enum: ["employee", "manager", "admin"],
-      default: "employee",
-    },
-    isActive: {
-      type: Boolean,
-      default: true,
     },
   },
   { timestamps: true }

@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import { useAuth } from "@clerk/clerk-react";
 import Loading from "./Components/Loading";
 import AdminDashboard from "./pages/admin/AdminDashboard";
@@ -19,6 +20,7 @@ const App = () => {
 
   return (
     <div>
+      <ToastContainer />
       <Routes>
         <Route path="/register" element={<Register />} />
         <Route

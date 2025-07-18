@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Navbar from "../Components/ui/Navbar";
 import Sidebar from "../Components/ui/Sidebar";
-import LeaveHistoryTable from "../Components/leave/LeaveHistoryTable";
 import LeaveApplyForm from "../Components/leave/LeaveApplyForm";
+import LeaveCard from "../Components/leave/LeaveCard";
 
 export default function Leave() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -14,7 +14,7 @@ export default function Leave() {
       <div className="flex flex-col flex-1">
         <Navbar onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />
         <div className="my-5 px-3">
-          <LeaveHistoryTable setShowAddModal={setShowAddModal} />
+          <LeaveCard setShowAddModal={setShowAddModal} />
           {showAddModal && (
             <LeaveApplyForm
               setShowAddModal={setShowAddModal}
