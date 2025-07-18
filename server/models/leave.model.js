@@ -17,7 +17,6 @@ const LeaveSchema = new Schema(
     documents: { type: String, required: false },
     status: {
       type: String,
-      enum: ["pending", "approved", "rejected"],
       default: "Pending",
     },
     approvedBy: {

@@ -16,10 +16,13 @@ export default function EmployeeTable({ setShowAddModal }) {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
 
+  const BASE_URL =
+    import.meta.env.REACT_APP_BASE_URL || "http://localhost:5000/api";
+
   useEffect(() => {
     const fetchEmployee = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/employees");
+        const response = await axios.get(`${BASE_URL}/employees`);
         setEmp(response.data);
       } catch (error) {
         console.error("Error fetching employee:", error);

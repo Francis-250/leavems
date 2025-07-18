@@ -5,11 +5,9 @@ import Loading from "./Components/Loading";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import Login from "./pages/auth/Login";
 import Dashboard from "./pages/Dashboard";
-import Register from "./pages/auth/Register";
 import Leave from "./pages/Leave";
 import Employee from "./pages/admin/Employee";
 import LeaveAdmin from "./pages/admin/Leave";
-import Reports from "./pages/admin/Reports";
 
 const App = () => {
   const { isSignedIn, isLoaded } = useAuth();
@@ -22,7 +20,6 @@ const App = () => {
     <div>
       <ToastContainer />
       <Routes>
-        <Route path="/register" element={<Register />} />
         <Route
           path="/login"
           element={!isSignedIn ? <Login /> : <Navigate to="/admin" replace />}
@@ -53,10 +50,6 @@ const App = () => {
         <Route
           path="/admin/employees"
           element={isSignedIn ? <Employee /> : <Navigate to="/login" replace />}
-        />
-        <Route
-          path="/admin/reports"
-          element={isSignedIn ? <Reports /> : <Navigate to="/login" replace />}
         />
       </Routes>
     </div>

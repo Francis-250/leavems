@@ -16,12 +16,15 @@ export default function AddEmployee({ setShowAddModal, showAddModal }) {
 
   const values = { firstName, lastName, email, department, position, hireDate };
 
+  const BASE_URL =
+    import.meta.env.REACT_APP_BASE_URL || "http://localhost:5000/api";
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      await axios.post("http://localhost:5000/api/employees", values);
+      await axios.post(`${BASE_URL}/employees`, values);
       setShowAddModal(false);
       navigate("/admin/employees");
       window.location.reload();

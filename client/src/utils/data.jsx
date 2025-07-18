@@ -23,11 +23,6 @@ export const adminLinks = [
     link: "/admin/employees",
     icon: <FiUsers className="mr-3" />,
   },
-  {
-    name: "Reports",
-    link: "/admin/reports",
-    icon: <FiPieChart className="mr-3" />,
-  },
 ];
 
 export const employeeLinks = [
