@@ -2,7 +2,6 @@ import express from "express";
 import {
   ApplyLeave,
   DeleteLeave,
-  EditLeave,
   EditStatus,
   GetLeave,
 } from "../controllers/leave.controller.js";

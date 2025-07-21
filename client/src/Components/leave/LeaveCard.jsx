@@ -17,6 +17,19 @@ export default function LeaveCard({ setShowAddModal }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
 
+  // Delete leave handler
+  const handleDelete = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this leave record?"))
+      return;
+    try {
+      await axios.delete(`${BASE_URL}/leave/${id}`);
+      setLeave((prev) => prev.filter((item) => item._id !== id));
+    } catch (error) {
+      alert("Failed to delete leave record.");
+      console.error(error);
+    }
+  };
+
   const BASE_URL =
     import.meta.env.REACT_APP_BASE_URL || "http://localhost:5000/api";
 
@@ -113,7 +126,7 @@ export default function LeaveCard({ setShowAddModal }) {
           ) : (
             filteredLeave.map((leave, i) => (
               <div
-                key={i}
+                key={leave._id || i}
                 className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-blue-200 dark:border-gray-700 hover:shadow-md transition-all duration-200 overflow-hidden group hover:border-blue-300 dark:hover:border-gray-600 p-3"
               >
                 <div className="flex justify-between items-center">
@@ -121,10 +134,10 @@ export default function LeaveCard({ setShowAddModal }) {
                     {leave.leaveType}
                   </h3>
                   <div className="flex items-center gap-1">
-                    <button className="p-1 cursor-pointer text-blue-400">
-                      <FaEdit />
-                    </button>
-                    <button className="p-1 text-red-600 cursor-pointer">
+                    <button
+                      className="p-1 text-red-600 cursor-pointer"
+                      onClick={() => handleDelete(leave._id)}
+                    >
                       <FaTrash />
                     </button>
                   </div>
