@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { FiX, FiUser, FiMail, FiBriefcase, FiCalendar } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { url } from "../../assets/asset";
 
 export default function AddEmployee({ setShowAddModal, showAddModal }) {
   const [firstName, setFirstName] = useState("");
@@ -16,8 +17,7 @@ export default function AddEmployee({ setShowAddModal, showAddModal }) {
 
   const values = { firstName, lastName, email, department, position, hireDate };
 
-  const BASE_URL =
-    import.meta.env.REACT_APP_BASE_URL || "http://localhost:5000/api";
+  const BASE_URL = url;
 
   const handleSubmit = async (e) => {
     e.preventDefault();

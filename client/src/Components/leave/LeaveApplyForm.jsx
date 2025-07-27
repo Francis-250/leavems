@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { FiX, FiCalendar, FiClock, FiEdit, FiInfo } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { url } from "../../assets/asset";
 
 export default function LeaveApplyForm({ setShowAddModal, showAddModal }) {
   const [leaveType, setLeaveType] = useState("");
@@ -13,8 +14,7 @@ export default function LeaveApplyForm({ setShowAddModal, showAddModal }) {
   const values = { leaveType, startDate, endDate, reason };
   const navigate = useNavigate();
 
-  const BASE_URL =
-    import.meta.env.REACT_APP_BASE_URL || "http://localhost:5000/api";
+  const BASE_URL = url;
 
   const handleSubmit = async (e) => {
     e.preventDefault();

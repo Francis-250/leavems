@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa";
 import { calculateDuration, formatDate } from "../../utils/format";
 import axios from "axios";
+import { url } from "../../assets/asset";
 
 export default function LeaveCard({ setShowAddModal }) {
   const [leave, setLeave] = useState([]);
@@ -20,8 +21,7 @@ export default function LeaveCard({ setShowAddModal }) {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [leaveToDelete, setLeaveToDelete] = useState(null);
 
-  const BASE_URL =
-    import.meta.env.REACT_APP_BASE_URL || "http://localhost:5000/api";
+  const BASE_URL = url;
 
   const handleDeleteClick = (id) => {
     setLeaveToDelete(id);

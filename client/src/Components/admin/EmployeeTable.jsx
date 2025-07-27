@@ -10,14 +10,14 @@ import {
   FaClock,
 } from "react-icons/fa";
 import { formatDate } from "../../utils/format";
+import { url } from "../../assets/asset";
 
 export default function EmployeeTable({ setShowAddModal }) {
   const [emp, setEmp] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const BASE_URL =
-    import.meta.env.REACT_APP_BASE_URL || "http://localhost:5000/api";
+  const BASE_URL = url;
 
   useEffect(() => {
     const fetchEmployee = async () => {

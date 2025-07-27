@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 import { calculateDuration, formatDate } from "../../utils/format";
 import axios from "axios";
+import { url } from "../../assets/asset";
 
 export default function LeaveEmployeeTable() {
   const [leave, setLeave] = useState([]);
@@ -20,7 +21,7 @@ export default function LeaveEmployeeTable() {
   useEffect(() => {
     const fetchLeave = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/leave");
+        const response = await fetch(url + "/leave");
         if (!response.ok) {
           throw new Error("Failed to fetch Leave");
         }
