@@ -42,7 +42,7 @@ const App = () => {
           }
         /> */}
         <Route
-          path="/admin"
+          path="/admin/leave"
           element={
             isSignedIn ? <LeaveAdmin /> : <Navigate to="/login" replace />
           }
