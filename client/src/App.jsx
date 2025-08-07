@@ -24,25 +24,25 @@ const App = () => {
           path="/login"
           element={!isSignedIn ? <Login /> : <Navigate to="/admin" replace />}
         />
-        <Route
+{/*         <Route
           path="/"
           element={
             isSignedIn ? <Dashboard /> : <Navigate to="/login" replace />
           }
-        />
+        /> */}
         <Route
-          path="/leaves"
+          path="/"
           element={isSignedIn ? <Leave /> : <Navigate to="/login" replace />}
         />
         {/* admin */}
-        <Route
+{/*         <Route
           path="/admin"
           element={
             isSignedIn ? <AdminDashboard /> : <Navigate to="/login" replace />
           }
-        />
+        /> */}
         <Route
-          path="/admin/leave"
+          path="/admin"
           element={
             isSignedIn ? <LeaveAdmin /> : <Navigate to="/login" replace />
           }
