@@ -9,13 +9,13 @@ import {
 
 export const adminLinks = [
   {
-    name: "Dashboard",
-    link: "/admin",
+    name: "Employee Dashboard",
+    link: "/",
     icon: <FiHome className="mr-3" />,
   },
   {
     name: "Leave Requests",
-    link: "/admin/leave",
+    link: "/admin",
     icon: <FiFileText className="mr-3" />,
   },
   {
@@ -27,7 +27,7 @@ export const adminLinks = [
 
 export const employeeLinks = [
   {
-    name: "Dashboard",
+    name: "Admin",
     link: "/",
     icon: <FiHome className="mr-3" />,
   },
