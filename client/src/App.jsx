@@ -35,12 +35,12 @@ const App = () => {
           element={isSignedIn ? <Leave /> : <Navigate to="/login" replace />}
         />
         {/* admin */}
-{/*         <Route
+        <Route
           path="/admin"
           element={
             isSignedIn ? <AdminDashboard /> : <Navigate to="/login" replace />
           }
-        /> */}
+        />
         <Route
           path="/admin/leave"
           element={
