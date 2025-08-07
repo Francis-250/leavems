@@ -28,12 +28,12 @@ export const adminLinks = [
 export const employeeLinks = [
   {
     name: "Admin",
-    link: "/",
+    link: "/admin",
     icon: <FiHome className="mr-3" />,
   },
   {
     name: "My Leaves",
-    link: "/leaves",
+    link: "/",
     icon: <FiList className="mr-3" />,
   },
 ];
