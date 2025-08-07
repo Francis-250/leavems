@@ -9,8 +9,8 @@ import {
 
 export const adminLinks = [
   {
-    name: "Dashboard Employee",
-    link: "/",
+    name: "Dashboard",
+    link: "/admin",
     icon: <FiHome className="mr-3" />,
   },
   {
@@ -27,8 +27,8 @@ export const adminLinks = [
 
 export const employeeLinks = [
   {
-    name: "admin",
-    link: "/admin",
+    name: "Dashboard",
+    link: "/",
     icon: <FiHome className="mr-3" />,
   },
   {
