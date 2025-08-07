@@ -172,9 +172,7 @@ export default function EmployeeTable({ setShowAddModal }) {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-center">
                       <div className="flex justify-center items-center gap-2">
-                        <button className="p-2 text-blue-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-gray-700 rounded-full transition-all duration-200">
-                          <FaEdit className="w-4 h-4" />
-                        </button>
+                        
                         <button
                           onClick={() => handleDelete(emp._id)}
                           className="p-2 text-red-600 hover:text-red-700 hover:bg-red-50 dark:hover:bg-gray-700 rounded-full transition-all duration-200"
